@@ -1,4 +1,5 @@
 class TransactionsController < ApplicationController
+  before_action :require_user, only: [:index, :show] # resticts to non logged in users
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
 
   # GET /transactions

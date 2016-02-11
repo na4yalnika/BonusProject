@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160209215506) do
+ActiveRecord::Schema.define(version: 20160211130725) do
 
   create_table "transactions", force: :cascade do |t|
     t.integer  "ammount"
@@ -28,9 +28,9 @@ ActiveRecord::Schema.define(version: 20160209215506) do
     t.string   "email"
     t.string   "company"
     t.string   "group"
-    t.string   "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "password_digest"
   end
 
 end
