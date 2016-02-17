@@ -1,4 +1,4 @@
 class Transaction < ActiveRecord::Base
-	belongs_to :source, :class_name => 'User'
-	belongs_to :target, :class_name => 'User'
+	belongs_to :user
+	belongs_to :recipient, :class_name => 'User'
 end
