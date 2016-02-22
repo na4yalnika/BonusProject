@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get 'login'  => 'sessions#new' 
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-  root 'transactions#index'
+  get 'dashboard'  => 'dashboards#index' 
+  get 'home'  => 'pages#index' 
+  root 'pages#index'
   
   #get '/users' => 'users#index'
   #get '/users/:id' => 
