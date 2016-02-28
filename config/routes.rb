@@ -6,9 +6,12 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   get 'dashboard'  => 'dashboards#index' 
+  get 'sent'  => 'dashboards#sent' 
+  get 'received'  => 'dashboards#received' 
+  get 'settings'  => 'dashboards#settings' 
   get 'home'  => 'pages#index' 
-  root 'pages#index'
-  
+  root 'dashboards#index'
+
   #get '/users' => 'users#index'
   #get '/users/:id' => 
   # The priority is based upon order of creation: first created -> highest priority.

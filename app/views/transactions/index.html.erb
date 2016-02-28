@@ -9,7 +9,8 @@
     <thead>
       <tr>
         <th>Amount</th>
-        <th>Description</th>
+        <th>Type</th>
+        <th>Comment</th>
         <th>From</th>
         <th>To</th>
         <th colspan="3"></th>
@@ -19,8 +20,9 @@
     <tbody>
       <% @transactions.each do |transaction| %>
         <tr>
-          <td><%= transaction.ammount %></td>
-          <td><%= transaction.description %></td>
+          <td><%= transaction.amount %></td>
+          <td><%= transaction.tag %></td>
+          <td><%= transaction.comment %></td>
           <td><%= transaction.user.first_name + ' ' + transaction.user.last_name %></td>
           <td><%= transaction.recipient.first_name + ' ' + transaction.recipient.last_name %></td>
           <td><%= link_to 'Show', transaction %></td>
@@ -39,7 +41,8 @@
     <thead>
       <tr>
         <th>Amount</th>
-        <th>Description</th>
+        <th>Type</th>
+        <th>Comment</th>
         <th>To</th>
         <th colspan="3"></th>
       </tr>
@@ -48,8 +51,9 @@
     <tbody>
       <% current_user.transactions.each do |transaction| %>
         <tr>
-          <td><%= transaction.ammount %></td>
-          <td><%= transaction.description %></td>
+          <td><%= transaction.amount %></td>
+          <td><%= transaction.tag %></td>
+          <td><%= transaction.comment %></td>
           <td><%= transaction.recipient.first_name + ' ' + transaction.recipient.last_name %></td>
         </tr>
       <% end %>
@@ -62,7 +66,8 @@
     <thead>
       <tr>
         <th>Amount</th>
-        <th>Description</th>
+        <th>Type</th>
+        <th>Comment</th>
         <th>From</th>
         <th colspan="3"></th>
       </tr>
@@ -71,8 +76,9 @@
     <tbody>
       <% @transactions.where(recipient_id: current_user.id).each do |transaction| %>
         <tr>
-          <td><%= transaction.ammount %></td>
-          <td><%= transaction.description %></td>
+          <td><%= transaction.amount %></td>
+          <td><%= transaction.tag %></td>
+          <td><%= transaction.comment %></td>
           <td><%= transaction.user.first_name + ' ' + transaction.user.last_name %></td>
         </tr>
       <% end %>
