@@ -11,24 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :amount %><br>
-    <%= f.text_field :amount %>
-  </div>
-  <div class="field">
-    <%= f.label :tag %><br>
-    <%= f.text_field :tag %>
-  </div>
-  <div class="field">
-    <%= f.label :comment %><br>
-    <%= f.text_field :comment %>
-  </div>
-  <div class="field">
-    <%= f.label :recipient_id %><br>
-    <%= f.text_field :recipient_id %>
-  </div>
   
-  <div class="actions">
-    <%= f.submit %>
+  <div class="field">
+    <%= f.text_field :recipient_id, :placeholder => "To", class: "form-control"  %>
   </div>
+  <br>
+  <div class="field">
+    <%= f.text_field :tag, :placeholder => "Type", class: "form-control" %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.number_field :amount, :placeholder => "Amount", class: "form-control" %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.text_area :comment, :placeholder => "Comments", class: "form-control" %>
+  </div>
+  <br>
+  
+    <%= f.submit "Send", class: "btn btn-success" %>
+    <%= link_to "Discard", root_path, class: "btn btn-danger" %>
+
 <% end %>
