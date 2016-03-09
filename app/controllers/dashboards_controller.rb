@@ -1,5 +1,5 @@
 class DashboardsController < ApplicationController
-  before_action :require_user
+  before_action :authenticate_user!
 
   def index
   end

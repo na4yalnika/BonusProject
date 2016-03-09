@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :require_user, only: [:index, :show] #resticts to non logged in users
-  before_action :require_admin, only: [:destroy, :edit] #permits users with an editor role to access the destroy and edit actions
+  before_action :authenticate_user!
+  # before_action :require_admin, only: [:destroy, :edit] #permits users with an editor role to access the destroy and edit actions
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -29,24 +29,13 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    if @user.save
+      # session[:user_id] = @user.id
+      redirect_to '/'
+    else
+      redirect_to '/signup'
+    end
 
-#    respond_to do |format|
-#      if @user.save
-#        format.html { redirect_to @user, notice: 'User was successfully created.' }
-#        format.json { render :show, status: :created, location: @user }
-#      else
-#        format.html { render :new }
-#        format.json { render json: @user.errors, status: :unprocessable_entity }
-#      end
-#    end
-
-    if @user.save 
-      session[:user_id] = @user.id 
-      redirect_to '/' 
-    else 
-      redirect_to '/signup' 
-    end 
-    
   end
 
   # PATCH/PUT /users/1
@@ -81,6 +70,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :company, :group, :password)
+      params.require(:user).permit(:first_name, :last_name, :email, :team_id, :group, :password)
     end
 end
