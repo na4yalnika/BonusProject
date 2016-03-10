@@ -30,6 +30,9 @@ class TransactionsController < ApplicationController
 
     respond_to do |format|
       if @transaction.save
+
+        TransactionMailer.bonus_received(@transaction.recipient).deliver_now
+
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
         format.json { render :show, status: :created, location: @transaction }
       else

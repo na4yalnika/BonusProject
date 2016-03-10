@@ -14,7 +14,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -42,6 +42,17 @@ Rails.application.configure do
   # Ensure you have defined default url options in your environments files. Here
   # is an example of default_url_options appropriate for a development environment
   # in config/environments/development.rb:
-
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.perform_deliveries = true
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => "gmail.com",
+    :user_name            => "bonusprojectmailer@gmail.com",
+    :password             => "123bonusprojectmailer",
+    :authentication       => 'plain',
+    :enable_starttls_auto => true
+  }
+
 end
