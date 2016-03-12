@@ -44,6 +44,7 @@
         </div>
       <% else %> <!-- log in form -->
         <div id="navbar" class="collapse navbar-collapse">
+          <!-- Log in form
           <%= form_for(:session, url: new_user_session_path, html: {class: "navbar-form navbar-right"}) do |f|%>
             <div class="form-group">
               <%= f.email_field :email, :placeholder => "Email", class: "form-control"%>
@@ -52,7 +53,12 @@
               <%= f.password_field :password, :placeholder => "Password", class: "form-control"%>
             </div>
             <%= f.submit "Log in", class: "btn btn-success" %>
-          <% end %>
+          <% end %> -->
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'Log In', new_user_session_path %></li>
+            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          </ul>
         </div>
       <% end %>
     </div>

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
 
   authenticated :user do
     root 'dashboards#index', as: :authenticated_root
@@ -10,10 +10,6 @@ Rails.application.routes.draw do
   resources :teams
   resources :transactions
   resources :users
-  # get 'signup'  => 'users#new'
-  # get 'login'  => 'sessions#new'
-  # post 'login' => 'sessions#create'
-  # delete 'logout' => 'sessions#destroy'
   get 'dashboard'  => 'dashboards#index'
   get 'sent'  => 'dashboards#sent'
   get 'received'  => 'dashboards#received'

@@ -7,12 +7,6 @@ class User < ActiveRecord::Base
 	has_many :transactions
 	has_many :recipients, :through => :transactions
 	belongs_to :team
-
-# commented authentification
-  # has_secure_password
-	#
-  # def admin? #method to determine if a user has the role of admin
-  #     self.role == 'admin'
-  # end
+  validates_presence_of :first_name, :last_name
 
 end

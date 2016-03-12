@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  # before_action :require_admin, only: [:destroy, :edit] #permits users with an editor role to access the destroy and edit actions
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
