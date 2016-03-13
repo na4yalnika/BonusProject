@@ -20,6 +20,7 @@ class TeamsController < ApplicationController
 
   # GET /teams/1/edit
   def edit
+    authorize! :update, @team
   end
 
   # POST /teams

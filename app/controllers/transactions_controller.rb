@@ -20,6 +20,7 @@ class TransactionsController < ApplicationController
 
   # GET /transactions/1/edit
   def edit
+    authorize! :update, @transaction
   end
 
   # POST /transactions
