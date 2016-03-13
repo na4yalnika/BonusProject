@@ -1,8 +1,3 @@
-
-<p id="notice"><%= notice %></p>
-
-<% if current_user && current_user.admin? %> 
-
   <h1>All Transactions</h1>
 
   <table class="table">
@@ -28,58 +23,6 @@
           <td><%= link_to 'Show', transaction %></td>
           <td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
           <td><%= link_to 'Destroy', transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-<% else %> 
-
-  <h1>Send Transactions</h1>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Amount</th>
-        <th>Type</th>
-        <th>Comment</th>
-        <th>To</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% current_user.transactions.each do |transaction| %>
-        <tr>
-          <td><%= transaction.amount %></td>
-          <td><%= transaction.tag %></td>
-          <td><%= transaction.comment %></td>
-          <td><%= transaction.recipient.first_name + ' ' + transaction.recipient.last_name %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <h1>Received Transactions</h1>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Amount</th>
-        <th>Type</th>
-        <th>Comment</th>
-        <th>From</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @transactions.where(recipient_id: current_user.id).each do |transaction| %>
-        <tr>
-          <td><%= transaction.amount %></td>
-          <td><%= transaction.tag %></td>
-          <td><%= transaction.comment %></td>
-          <td><%= transaction.user.first_name + ' ' + transaction.user.last_name %></td>
         </tr>
       <% end %>
     </tbody>
